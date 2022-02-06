@@ -13,6 +13,7 @@
 
 \usepackage{tikz}
 \usepackage{framed}
+\usepackage{gensymb}
 
 \usepackage{enumitem}
 \setitemize{itemsep=1pt}
@@ -127,19 +128,35 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 	\subsection{Dữ liệu}
 	Dữ liệu được kết hợp thu thập từ thực địa, và từ các tập dữ liệu khác trên mạng [4]. Dữ liệu từ thực địa được thu thập tại huyện Đăk Hà (huyện nổi tiếng về sản xuất cà phê trên địa bàn tỉnh Kon Tum) và xã Ia Chim (xã trồng nhiều cây cà phê của thành phố Kon Tum). Ảnh được thu thập từ nhiều thiết bị khác nhau (Samsung Galaxy A02, ASUS Zenfone 2, Xiaomi Redmi 5A, Xiaomi S2, Galaxy S8, và iPhone 6S). Mẫu vật được đặt trên nền trắng, dưới điều kiện kiểm soát một phần.
 
-	Sau một thời gian nghiên cứu và tìm hiểu, một bộ dữ liệu gồm 1747 bức ảnh chụp các lá cà phê (bao gồm lá bình thường và lá sâu bệnh) đã được thu thập.
+	Sau một thời gian nghiên cứu và tìm hiểu, một bộ dữ liệu gồm 1685 bức ảnh chụp các lá cà phê (bao gồm lá bình thường và lá sâu bệnh) đã được thu thập và phân loại. Kích thước của mỗi ảnh là 2048 x 1024.
 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.35]{images/image1}
-		\caption{sâu vẽ bùa (a), gỉ sắt (b), đốm nâu (c), đốm mắt cua (d)}
+		\caption{Sâu vẽ bùa (a), Gỉ sắt (b), Đốm nâu (c), Đốm mắt cua (d)}
 	\end{figure}
 
-	Tuy nhiên, mỗi bức ảnh có kích thước rất lớn, gây khó khăn trong quá trình xử lý về sau. Do đó, thay vì giữ nguyên bản, những vùng có sâu bệnh sẽ được cắt ra. Những vùng hoàn toàn bình thường trên lá cũng sẽ được cắt, nhằm mục đích đối chiếu với các vùng sâu bệnh. Sau tiền xử lý, thu được 2722 bức ảnh cắt xung quanh vùng có sâu bệnh và không có sâu bệnh trên lá.
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|}
+		\hline
+		Sâu bệnh    & Số lượng ảnh \\ \hline
+		Bình thường & 272          \\
+		Sâu vẽ bùa  & 387          \\
+		Gỉ sắt      & 531          \\
+		Đốm nâu     & 348          \\
+		Đốm mắt cua & 147          \\ \hline
+		Tổng        & 1685         \\ \hline
+		\end{tabular}
+
+		\caption{Thống kê dữ liệu thu thập được}
+	\end{table}
+
+	Tuy nhiên, mỗi bức ảnh có kích thước rất lớn, gây khó khăn trong quá trình xử lý về sau. Do đó, những vùng có sâu bệnh sẽ được cắt ra. Những vùng hoàn toàn bình thường trên lá cũng sẽ được cắt, nhằm mục đích đối chiếu với các vùng sâu bệnh. Sau tiền xử lý, thu được 2722 bức ảnh cắt xung quanh vùng có sâu bệnh và không có sâu bệnh trên lá. Kích thước của mỗi ảnh là 224 x 224.
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.4]{images/image3}
+		\includegraphics[scale=0.3]{images/image3}
 		\caption{Các vùng được cắt sau tiền xử lý}
 	\end{figure}
 
@@ -159,9 +176,23 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 		\caption{Thống kê dữ liệu sau tiền xử lý}
 	\end{table}
 
-	Tập dữ liệu được chia ra thành training set, validation set và test set, theo tỉ lệ 70-15-15. Trên thực tế, để rèn luyện cho một mô hình phức tạp, số lượng ảnh thu thập được như trên vẫn chưa đảm bảo, dễ dẫn đến tình trạng overfitting.
+	Như vậy, có hai dataset: dataset gốc (gồm các ảnh chưa xử lý) và dataset đã qua xử lý. Từng dataset được chia ra thành training set, validation set và test set, theo tỉ lệ 70-15-15. Data Augmentation được áp dụng trên các tập để tăng cường dữ liệu cho các set.
 
-	Một kĩ thuật phổ biến để khắc phục vấn đề này là Data Augmentation. Kĩ thuật này lấy những dữ liệu có sẵn trong tập, chỉnh sửa để tạo ra những dữ liệu mới mà không làm mất đi tính chất tổng quát của ảnh.
+	\begin{table}[H]
+		\centering
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabular}{|c|c|}
+		\hline
+		Cấu hình         & Giá trị         \\ \hline
+		Rescaling factor & $\frac{1}{255}$ \\ \hline
+		Rotation range   & 180$\degree$    \\ \hline
+		Sheer range      & 20\%            \\ \hline
+		Zoom range       & 20\%            \\ \hline
+		Random flip      & true            \\ \hline
+		\end{tabular}
+
+		\caption{Cấu hình Data Augmentation}
+	\end{table}
 
 	\begin{figure}[H]
 		\centering
@@ -170,7 +201,7 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 	\end{figure}
 
 	\subsection{Mô hình}
-	Các mô hình được thử nghiệm trong dự án bao gồm: InceptionV3, MobileNetV2, ResNet50V2, VGG16 và Xception. Những mô hình này đều đã được học qua ImageNet và được tiếp tục luyện trên toàn bộ mạng bằng dữ liệu mới mà không đóng băng bất cứ thông số nào.
+	Các mô hình được thử nghiệm trong dự án bao gồm: InceptionV3, MobileNetV2, ResNet50V2, VGG16 và Xception. Những mô hình này đều đã được học qua ImageNet và được tiếp tục luyện trên toàn bộ mạng bằng dữ liệu mới mà không đóng băng thông số nào.
 
 	\begin{table}[H]
 		\centering
@@ -187,69 +218,125 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 		\caption{Thông số của các kiến trúc được thử nghiệm}
 	\end{table}
 
-	Các Hyperparameter được sử dụng cho các mô hình bao gồm:
+	\begin{table}[H]
+		\centering
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabular}{|c|c|}
+		\hline
+		Hyperparameter & Giá trị                   \\ \hline
+		Batch size     & 24                        \\ \hline
+		Epochs         & 50                        \\ \hline
+		Loss function  & Categorical Cross-Entropy \\ \hline
+		Optimization function   & \begin{tabular}[c]{@{}c@{}}Stochastic Gradient Descent\\ ($\alpha$ = 0.001, $\eta$ = 0.9)\end{tabular} \\ \hline
+		Regularization function & \begin{tabular}[c]{@{}c@{}}L2 Regularization\\ ($\lambda = 5 \times 10^{-4}$)\end{tabular}                   \\ \hline
+		\end{tabular}
 
-	\begin{itemize}
-		\item Batch size: 24
-		\item Epochs: 50
-		\item Hàm mất mát: Categorical Cross-Entropy
-		\item Hàm tối ưu: Stochastic Gradient Descent ($\alpha$ = 0.001, $\eta$ = 0.9)
-		\item Hàm tiêu biến: L2 Regularization ($\lambda = 5 \times 10^{-4}$)
-	\end{itemize}
+		\caption{Bảng giá trị của các Hyperparameter}
+	\end{table}
 
 	Các mô hình được huấn luyện trên môi trường Google Colab (GPU NVIDIA Tesla K80). Thư viện Keras được sử dụng để xây dựng và huấn luyện cho mô hình.
 
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.45]{images/accuracy.png}
-		\includegraphics[scale=0.45]{images/val_accuracy.png}
-		\caption{Biểu đồ accuracy trên training set và validation set}
-	\end{figure}
+	\subsubsection{Train trên dataset gốc}
+		Các model ban đầu được train trên dataset gốc. Kích thước gốc của các ảnh (2048 x 1024) quá lớn, gây tràn stack trong quá trình train. Vì vậy, ảnh được downsample xuống $\frac{1}{16}$ lần (kích thước mỗi chiều chỉ còn $\frac{1}{4}$ kích thước ban đầu).
 
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.45]{images/loss.png}
-		\includegraphics[scale=0.45]{images/val_loss.png}
-		\caption{Biểu đồ loss trên training set và validation set}
-	\end{figure}
-	
-	\begin{table}[H]
-		\centering
-		\begin{tabular}{|c|c|c|c|}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.4]{images/leaf_accuracy.png}
+			\includegraphics[scale=0.4]{images/leaf_val_accuracy.png}
+			\caption{Biểu đồ accuracy trên training set và validation set (gốc)}
+		\end{figure}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.4]{images/leaf_loss.png}
+			\includegraphics[scale=0.4]{images/leaf_val_loss.png}
+			\caption{Biểu đồ loss trên training set và validation set (gốc)}
+		\end{figure}
+
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{|c|c|}
 			\hline
-			Kiến trúc   & Accuracy (\%) & Precision (\%) & Recall (\%) \\ \hline
-			InceptionV3 & \textbf{93}   & \textbf{93}    & \textbf{93} \\
-			MobileNetV2 & 90            & 90             & 90          \\
-			ResNet50v2  & \textbf{93}   & \textbf{93}    & \textbf{93} \\
-			VGG16       & 84            & 84             & 84          \\
-			Xception    & \textbf{93}   & \textbf{93}    & \textbf{93} \\ \hline
-		\end{tabular}
-		\caption{Kết quả đo các mô hình trên test set}
-	\end{table}
+			Kiến trúc   & Thời gian (s) \\ \hline
+			InceptionV3 & 76.54         \\
+			MobileNetV2 & 76.28         \\
+			ResNet50V2  & 77.94         \\
+			VGG16       & 78.82         \\
+			Xception    & 88.88         \\ \hline
+			\end{tabular}
+			\caption{Thời gian trung bình cho mỗi epoch trên dataset (gốc)}
+		\end{table}
 
-	Ba mô hình InceptionV3, ResNet50V2 và Xception đều có kết quả đo tương đương: 93\% trên cả Accuracy, Precision và Recall, vượt trội so với MobileNetV2 và VGG16.
-	
-	Dựa trên các biểu đồ khi huấn luyện, Xception có tốc độ học nhanh và chính xác, InceptionV3 không thua kém quá nhiều, còn ResNet50V2 không ổn định trong suốt quá trình học.
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			Kiến trúc   & Accuracy (\%)  & Precision (\%) & Recall (\%)    & F1-score (\%)  \\ \hline
+			InceptionV3 & 72.09          & 72.09          & 72.09          & 72.09          \\
+			MobileNetV2 & \textbf{82.55} & \textbf{82.55} & \textbf{82.55} & \textbf{82.55} \\
+			ResNet50V2  & 75.58          & 75.58          & 75.58          & 75.58          \\
+			VGG16       & 56.20          & 56.20          & 56.20          & 56.20          \\
+			Xception    & 75.96          & 75.96          & 75.96          & 75.96          \\ \hline
+			\end{tabular}
+			\caption{Kết quả đo các mô hình trên test set (gốc)}
+		\end{table}
 
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.5]{images/xception_matrix.png}
-		\caption{Confusion Matrix của Xception}
-	\end{figure}
 
-	Sau quá trình nghiên cứu và thử nghiệm, mô hình \textbf{Xception} là mô hình phù hợp nhất với bài toán.
 
-	\begin{figure}[H]
-		\centering
-		\captionsetup{justification=centering}
-		\includegraphics[scale=0.32]{images/image5}
-		\includegraphics[scale=0.32]{images/image6}
-		\includegraphics[scale=0.32]{images/image4}
-		\includegraphics[scale=0.32]{images/image8}
-		\includegraphics[scale=0.32]{images/image12}
-		\includegraphics[scale=0.32]{images/image14}
-		\caption{Kết quả xử lý của các nơ-ron của một vài tầng\\(đối chiếu với Hình 4)}
-	\end{figure}
+	\subsubsection{Train trên dataset đã xử lý}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.45]{images/accuracy.png}
+			\includegraphics[scale=0.45]{images/val_accuracy.png}
+			\caption{Biểu đồ accuracy trên training set và validation set (đã xử lý)}
+		\end{figure}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.45]{images/loss.png}
+			\includegraphics[scale=0.45]{images/val_loss.png}
+			\caption{Biểu đồ loss trên training set và validation set (đã xử lý)}
+		\end{figure}
+
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{|c|c|}
+			\hline
+			Kiến trúc   & Thời gian (s) \\ \hline
+			InceptionV3 & 24.20         \\
+			MobileNetV2 & 21.28         \\
+			ResNet50V2  & 24.58         \\
+			VGG16       & 27.20         \\
+			Xception    & 27.42         \\ \hline
+			\end{tabular}
+			\caption{Thời gian trung bình cho mỗi epoch trên dataset (đã xử lý)}
+		\end{table}
+		
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				Kiến trúc   & Accuracy (\%) & Precision (\%) & Recall (\%) & F1-score (\%)    \\ \hline
+				InceptionV3 & \textbf{93}   & \textbf{93}    & \textbf{93} & \textbf{93} \\
+				MobileNetV2 & 90            & 90             & 90          & 90          \\
+				ResNet50v2  & \textbf{93}   & \textbf{93}    & \textbf{93} & \textbf{93} \\
+				VGG16       & 84            & 84             & 84          & 84          \\
+				Xception    & \textbf{93}   & \textbf{93}    & \textbf{93} & \textbf{93} \\ \hline
+			\end{tabular}
+			\caption{Kết quả đo các mô hình trên test set (đã xử lý)}
+		\end{table}
+		
+		Ba mô hình InceptionV3, ResNet50V2 và Xception đều có kết quả đo tương đương: F1-score đạt 93\%, vượt trội so với MobileNetV2 (90\%) và VGG16 (84\%).
+		
+		Dựa trên các biểu đồ khi huấn luyện, Xception có tốc độ học nhanh và chính xác hơn, InceptionV3 không thua kém quá nhiều, còn ResNet50V2 không ổn định trong suốt quá trình học.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{images/xception_matrix.png}
+			\caption{Confusion Matrix của Xception}
+		\end{figure}
+
+		Sau quá trình nghiên cứu và thử nghiệm, mô hình \textbf{Xception} là mô hình phù hợp nhất với bài toán.
 
 	\subsection{Ứng dụng Di động}
 	Để ứng dụng kết quả từ mô hình trên vào thực tế, tác giả đã phát triển một ứng dụng di động, liên lạc với máy chủ để xử lý.
