@@ -113,8 +113,8 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 		\subsubsection{Mục tiêu dự án}
 		Dự án nghiên cứu nhằm:
 		\begin{itemize}
-			\item Xây dựng một mô hình giúp nhân dân, đặc biệt là đồng bào dân tộc thiểu số (đa số có trình độ dân trí thấp, chưa biết ứng dụng khoa học kĩ thuật vào canh tác) nhận diện các loại sâu bệnh trên cây cà phê qua hình ảnh với độ chính xác cao;
-			\item Ứng dụng mô hình vào thực tiễn tại địa phương, giúp giảm thiểu thiệt hại do sâu bệnh gây ra, góp phần phát triển kinh tế - xã hội trên địa bàn, giúp đồng bào dân tộc thiểu số vươn lên thoát nghèo, làm giàu trên chính quê hương của mình.
+			\item Xây dựng một hệ thống giúp nhân dân, đặc biệt là đồng bào dân tộc thiểu số (đa số có trình độ dân trí thấp, chưa biết ứng dụng khoa học kĩ thuật vào canh tác) nhận diện các loại sâu bệnh trên cây cà phê qua hình ảnh với độ chính xác cao;
+			\item Ứng dụng hệ thống vào thực tiễn tại địa phương, giúp giảm thiểu thiệt hại do sâu bệnh gây ra, góp phần phát triển kinh tế - xã hội trên địa bàn, giúp đồng bào dân tộc thiểu số vươn lên thoát nghèo, làm giàu trên chính quê hương của mình.
 		\end{itemize}
 			
 	\subsection{Ý nghĩa của dự án}
@@ -126,9 +126,9 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 
 \section{Hệ thống}
 	\subsection{Dữ liệu}
-	Dữ liệu được kết hợp thu thập từ thực địa, và từ các tập dữ liệu khác trên mạng [4]. Dữ liệu từ thực địa được thu thập tại huyện Đăk Hà (huyện nổi tiếng về sản xuất cà phê trên địa bàn tỉnh Kon Tum) và xã Ia Chim (xã trồng nhiều cây cà phê của thành phố Kon Tum). Ảnh được thu thập từ nhiều thiết bị khác nhau (Samsung Galaxy A02, ASUS Zenfone 2, Xiaomi Redmi 5A, Xiaomi S2, Galaxy S8, và iPhone 6S). Mẫu vật được đặt trên nền trắng, dưới điều kiện kiểm soát một phần.
+	Dữ liệu được kết hợp thu thập từ thực địa và từ các dataset khác trên mạng. Dữ liệu từ thực địa được thu thập tại các xã, thị trấn thuộc huyện Đăk Hà và xã Ia Chim, thành phố Kon Tum, tỉnh Kon Tum. Ảnh được thu thập từ nhiều thiết bị khác nhau (Samsung Galaxy A02, ASUS Zenfone 2, Xiaomi Redmi 5A, Xiaomi S2, Galaxy S8, và iPhone 6S). Mẫu vật được đặt trên nền trắng, dưới điều kiện kiểm soát một phần.
 
-	Sau một thời gian nghiên cứu và tìm hiểu, một bộ dữ liệu gồm 1685 bức ảnh chụp các lá cà phê (bao gồm lá bình thường và lá sâu bệnh) đã được thu thập và phân loại. Kích thước của mỗi ảnh là 2048 x 1024.
+	Một dataset gồm 1685 bức ảnh chụp các lá cà phê (bao gồm lá bình thường và lá sâu bệnh) đã được thu thập và phân loại. Kích thước của mỗi ảnh là 2048 x 1024.
 
 	\begin{figure}[H]
 		\centering
@@ -197,11 +197,15 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.25]{images/image2}
-		\caption{Ảnh được chỉnh sửa trong bước Data Augmentation}
+		\caption{Ảnh được chỉnh sửa qua Data Augmentation}
 	\end{figure}
 
-	\subsection{Mô hình}
-	Các mô hình được thử nghiệm trong dự án bao gồm: InceptionV3, MobileNetV2, ResNet50V2, VGG16 và Xception. Những mô hình này đều đã được học qua ImageNet và được tiếp tục luyện trên toàn bộ mạng bằng dữ liệu mới mà không đóng băng thông số nào.
+	\subsection{Model}
+	Machine Learning đang được ứng dụng rộng rãi, hỗ trợ rất nhiều lĩnh vực trong đời sống. Machine Learning có khả năng học từ data, và ứng dụng những gì học được để giải quyết các bài toán cụ thể.
+
+	Deep Learning, một nhánh của Machine Learning, mô phỏng cách não bộ con người tiếp nhận và xử lý thông tin bằng một neural network gồm nhiều tầng xếp lên nhau. Deep Learning có khả năng tự chiết xuất đặc tính từ data, và càng nhiều data thì model Deep Learning càng hiệu quả. Vì vậy, Deep Learning là giải pháp phù hợp để phân loại hình ảnh.
+
+	Các model được thử nghiệm trong dự án bao gồm: InceptionV3, MobileNetV2, ResNet50V2, VGG16 và Xception. Những model này đều đã được học qua ImageNet và được tiếp tục luyện trên toàn bộ mạng bằng data mới mà không đóng băng thông số nào.
 
 	\begin{table}[H]
 		\centering
@@ -234,10 +238,10 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 		\caption{Bảng giá trị của các Hyperparameter}
 	\end{table}
 
-	Các mô hình được huấn luyện trên môi trường Google Colab (GPU NVIDIA Tesla K80). Thư viện Keras được sử dụng để xây dựng và huấn luyện cho mô hình.
+	Các model được huấn luyện trên môi trường Google Colab (NVIDIA Tesla K80). Thư viện Keras được sử dụng để xây dựng và huấn luyện cho model.
 
-	\subsubsection{Train trên dataset gốc}
-		Các model ban đầu được train trên dataset gốc. Kích thước gốc của các ảnh (2048 x 1024) quá lớn, gây tràn stack trong quá trình train. Vì vậy, ảnh được downsample xuống $\frac{1}{16}$ lần (kích thước mỗi chiều chỉ còn $\frac{1}{4}$ kích thước ban đầu).
+	\subsubsection{Trên dataset gốc}
+		Các model ban đầu được train trên dataset gốc. Kích thước gốc của các ảnh (2048 x 1024) quá lớn, gây tràn stack trong quá trình train. Vì vậy, ảnh được downsample (kích thước mỗi chiều chỉ còn $\frac{1}{4}$ kích thước ban đầu).
 
 		\begin{figure}[H]
 			\centering
@@ -257,12 +261,12 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 			\centering
 			\begin{tabular}{|c|c|}
 			\hline
-			Kiến trúc   & Thời gian (s) \\ \hline
-			InceptionV3 & 76.54         \\
-			MobileNetV2 & 76.28         \\
-			ResNet50V2  & 77.94         \\
-			VGG16       & 78.82         \\
-			Xception    & 88.88         \\ \hline
+			Kiến trúc   & Thời gian (s)  \\ \hline
+			InceptionV3 & 76.54          \\
+			MobileNetV2 & \textbf{76.28} \\
+			ResNet50V2  & 77.94          \\
+			VGG16       & 78.82          \\
+			Xception    & 88.88          \\ \hline
 			\end{tabular}
 			\caption{Thời gian trung bình cho mỗi epoch trên dataset (gốc)}
 		\end{table}
@@ -278,12 +282,21 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 			VGG16       & 56.20          & 56.20          & 56.20          & 56.20          \\
 			Xception    & 75.96          & 75.96          & 75.96          & 75.96          \\ \hline
 			\end{tabular}
-			\caption{Kết quả đo các mô hình trên test set (gốc)}
+			\caption{Kết quả đo các model trên test set (gốc)}
 		\end{table}
 
+		MobileNetV2 đạt được F1-score 82.55\%, vượt trội so với các model khác. Tốc độ train của model này cũng nhanh nhất, đạt 76.28s/epoch. Với lợi thế yêu cầu tính toán và yêu cầu bộ nhớ thấp nhờ vào lượng trainable parameter ít hơn đáng kể, MobileNetV2 xử lý khá ổn với input lớn và chưa qua xử lý. Cũng vì không cần nhiều sức mạnh tính toán, nên MobileNetV2 vốn là model thích hợp để tích hợp trực tiếp trên các thiết bị di động.
+		
 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{images/mobilenetv2_matrix.png}
+			\caption{Confusion Matrix của MobileNetV2 trên test set (gốc)}
+		\end{figure}
 
-	\subsubsection{Train trên dataset đã xử lý}
+		Kết quả đo trên dataset gốc không thực sự tốt. Việc giữ nguyên ảnh gốc khiến cho khối lượng input rất lớn, trong khi downsample sẽ giảm độ chi tiết, gây khó khăn trong nhận diện. Tốc độ train vẫn còn rất chậm, dù kích thước của input đã giảm.
+
+	\subsubsection{Trên dataset đã xử lý}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.45]{images/accuracy.png}
@@ -302,12 +315,12 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 			\centering
 			\begin{tabular}{|c|c|}
 			\hline
-			Kiến trúc   & Thời gian (s) \\ \hline
-			InceptionV3 & 24.20         \\
-			MobileNetV2 & 21.28         \\
-			ResNet50V2  & 24.58         \\
-			VGG16       & 27.20         \\
-			Xception    & 27.42         \\ \hline
+			Kiến trúc   & Thời gian (s)  \\ \hline
+			InceptionV3 & 24.20          \\
+			MobileNetV2 & \textbf{21.28} \\
+			ResNet50V2  & 24.58          \\
+			VGG16       & 27.20          \\
+			Xception    & 27.42          \\ \hline
 			\end{tabular}
 			\caption{Thời gian trung bình cho mỗi epoch trên dataset (đã xử lý)}
 		\end{table}
@@ -319,27 +332,35 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 				Kiến trúc   & Accuracy (\%) & Precision (\%) & Recall (\%) & F1-score (\%)    \\ \hline
 				InceptionV3 & \textbf{93}   & \textbf{93}    & \textbf{93} & \textbf{93} \\
 				MobileNetV2 & 90            & 90             & 90          & 90          \\
-				ResNet50v2  & \textbf{93}   & \textbf{93}    & \textbf{93} & \textbf{93} \\
+				ResNet50V2  & \textbf{93}   & \textbf{93}    & \textbf{93} & \textbf{93} \\
 				VGG16       & 84            & 84             & 84          & 84          \\
 				Xception    & \textbf{93}   & \textbf{93}    & \textbf{93} & \textbf{93} \\ \hline
 			\end{tabular}
-			\caption{Kết quả đo các mô hình trên test set (đã xử lý)}
+			\caption{Kết quả đo các model trên test set (đã xử lý)}
 		\end{table}
 		
-		Ba mô hình InceptionV3, ResNet50V2 và Xception đều có kết quả đo tương đương: F1-score đạt 93\%, vượt trội so với MobileNetV2 (90\%) và VGG16 (84\%).
+		Trên dataset đã xử lý, khả năng tính toán của các model có phần khác biệt so với trên dataset gốc. Các kết quả đo đều có sự cải thiện rõ rệt một cách đáng kể.
+
+		Ba model InceptionV3, ResNet50V2 và Xception đều có F1-score đạt 93\%, tốt hơn MobileNetV2 (90\%) và VGG16 (84\%). Cả ba model đều có số lượng parameter và số layer tương đối tương đồng.
 		
-		Dựa trên các biểu đồ khi huấn luyện, Xception có tốc độ học nhanh và chính xác hơn, InceptionV3 không thua kém quá nhiều, còn ResNet50V2 không ổn định trong suốt quá trình học.
+		MobileNetV2 vẫn là model có tốc độ train nhanh nhất, dù hiệu năng có phần thua thiệt hơn. Sức mạnh của VGG16 kém xa các model còn lại, trong khi thời gian train chỉ nhanh hơn Xception.
+
+		Mặc dù thời gian train chậm nhất, nhưng với lợi thế là model có nhiều tầng nhất, Xception có phần nhỉnh hơn khi chỉ mất vài epoch để các thông số đạt trạng thái gần tối ưu. Xuyên suốt quá trình train, biểu đồ của Xception cũng ổn định hơn nhiều.
 
 		\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.5]{images/xception_matrix.png}
-			\caption{Confusion Matrix của Xception}
+			\caption{Confusion Matrix của Xception trên test set (đã xử lý)}
 		\end{figure}
 
-		Sau quá trình nghiên cứu và thử nghiệm, mô hình \textbf{Xception} là mô hình phù hợp nhất với bài toán.
+		\subsubsection{Kết luận}
+
+		Trên dataset gốc, kết quả thu thập được không quá tốt khi chỉ MobileNetV2 đạt F1-score trên 80\%. Vì vậy, việc xử lý data trước khi train là cần thiết. Kết quả train trên dataset đã xử lý khả quan hơn hoàn toàn. Ba model InceptionV3, ResNet50V2 và Xception thể hiện tương đồng trên dataset này. InceptionV3 có tốc độ train nhanh nhất, còn Xception đạt trạng thái tối ưu sớm nhất.
+
+		Sau quá trình nghiên cứu và thử nghiệm, \textbf{Xception} là model phù hợp nhất với bài toán và phương pháp xử lý dữ liệu.
 
 	\subsection{Ứng dụng Di động}
-	Để ứng dụng kết quả từ mô hình trên vào thực tế, tác giả đã phát triển một ứng dụng di động, liên lạc với máy chủ để xử lý.
+	Để ứng dụng kết quả từ model trên vào thực tế, tác giả đã phát triển một ứng dụng di động, liên lạc với máy chủ để xử lý.
 
 	\begin{figure}[H]
 		\centering
@@ -351,18 +372,56 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 	\end{figure}
 
 	Ứng dụng được thiết kế đơn giản, gọn nhẹ, dễ sử dụng với bà con, đặc biệt là đồng bào dân tộc thiểu số.
-
-	Ứng dụng cho phép người dùng gửi hình ảnh (ảnh có sẵn trong máy hoặc ảnh chụp mới) lên máy chủ. Máy chủ tiếp nhận ảnh, xử lý ảnh bằng mô hình được xây dựng, rồi trả kết quả chẩn đoán về lại ứng dụng. Các kết quả trả về bao gồm tên bệnh, một số triệu chứng, đặc điểm đặc trưng và tên một vài thuốc đặc trị cho sâu bệnh.
-
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.4]{images/chart.pdf}
 		\caption{Sơ đồ hoạt động}
 	\end{figure}
 
+	Ứng dụng cho phép người dùng gửi hình ảnh (ảnh có sẵn trong máy hoặc ảnh chụp mới) lên máy chủ. Máy chủ tiếp nhận ảnh, xử lý ảnh bằng model được xây dựng, rồi trả kết quả chẩn đoán về lại ứng dụng. Các kết quả trả về bao gồm tên bệnh, một số triệu chứng, đặc điểm đặc trưng và tên một vài thuốc đặc trị cho sâu bệnh.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.1]{images/screenshot1.jpg}
+		\caption{Màn hình chính}
+	\end{figure}
+
+	Ở màn hình chính, có 2 lựa chọn: \textbf{Chụp ảnh mới} (chụp ảnh từ camera để lấy ảnh) và \textbf{Chọn trong máy} (chọn ảnh có sẵn trong bộ nhớ của máy).
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.1]{images/screenshot3.jpg}
+		\caption{Màn hình chọn ảnh}
+	\end{figure}
+
+	Ban đầu, sẽ không có ảnh nào được chọn. Nhấn \textbf{Chọn} để chọn ảnh, sẽ dẫn tới trình chụp ảnh hoặc trình chọn ảnh trong máy (tùy thuộc vào lựa chọn ở màn hình trước đó). Sau khi chọn ảnh, ảnh sẽ xuất hiện trên màn hình. Nhấn \textbf{Gửi} để gửi ảnh sang hệ thống xử lý.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.1]{images/screenshot4.jpg}
+		\caption{Màn hình kết quả}
+	\end{figure}
+
+	Sau khi chờ máy chủ xử lý xong, kết quả sẽ được trả về. Thông tin trả về bao gồm tên sâu bệnh, triệu chứng, một vài thông tin và một vài thuốc chữa. Ở góc phải dưới của màn hình, có nút \textbf{Chia sẻ} qua các ứng dụng, mạng xã hội hay e-mail, để bà con có thể liên lạc tới các Trung tâm về nông nghiệp để được tư vấn thêm.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.1]{images/screenshot2.jpg}
+		\caption{Cài đặt}
+	\end{figure}
+
+	Nút \textbf{Cài đặt} có hình bánh răng cưa, ở góc phải trên ở mọi màn hình. Người dùng có thể nhập Tên, Địa chỉ, Số điện thoại để được đính kèm khi \textbf{Chia sẻ} ở Màn hình Kết quả.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.14]{images/screenshot5.jpg}
+		\caption{Tính năng chia sẻ (trong ảnh: Zalo)}
+	\end{figure}
+
 		
 \section{Đánh giá chung}
-	Đề tài này nghiên cứu việc ứng dụng Trí tuệ Nhân tạo vào việc nhận diện một số sâu bệnh thường gặp, thông qua biểu hiện của lá. Dữ liệu cho việc rèn luyện được thu thập từ khu vực bản địa của tác giả, song song với tìm kiếm trên mạng [4]. Một số Mạng Tích chập đã được thử nghiệm, trong đó Xception mang lại kết quả tốt nhất. Để ứng dụng mô hình vào thực tế, một ứng dụng di động đơn giản đã được xây dựng, có chức năng gửi và tiếp nhận thông tin từ mô hình.
+	Đề tài này nghiên cứu việc ứng dụng Trí tuệ Nhân tạo vào việc nhận diện một số sâu bệnh thường gặp, thông qua biểu hiện của lá. Dữ liệu cho việc rèn luyện được thu thập từ khu vực bản địa của tác giả, song song với tìm kiếm trên mạng. Một số Mạng Tích chập đã được thử nghiệm, trong đó Xception mang lại kết quả tốt nhất. Để ứng dụng model vào thực tế, một ứng dụng di động đơn giản đã được xây dựng, có chức năng gửi và tiếp nhận thông tin từ model.
 	
 	Trí tuệ Nhân tạo là một phương pháp khả thi để nhận diện sâu bệnh qua hình thái của lá cà phê, và hoàn toàn có thể tiếp tục phát triển trong tương lai, mở rộng sang nhiều giống cây trồng khác, phục vụ người nông dân ở khắp mọi miền đất nước.
 
@@ -375,14 +434,14 @@ Vì vậy, tác giả đã nghiên cứu và phát triển dự án: \textbf{Nh�
 
 	\subsection{Nhược điểm}
 	\begin{itemize}
-		\item Mô hình vẫn chưa thực sự tối ưu, quá trình rèn luyện chưa đạt kết quả tốt nhất, tốc độ nhận diện còn chậm;
-		\item Kích thước tập dữ liệu để rèn luyện còn hạn chế, cần được mở rộng và làm phong phú thêm;
+		\item Model vẫn chưa thực sự tối ưu, quá trình rèn luyện chưa đạt kết quả tốt nhất, tốc độ nhận diện còn chậm;
+		\item Kích thước dataset để rèn luyện còn hạn chế, cần được mở rộng và làm phong phú thêm;
 		\item Cần bổ sung thêm cơ sở dữ liệu về sâu bệnh và các thông tin liên quan.
 	\end{itemize}
 
 	\subsection{Hướng phát triển}
 	\begin{itemize}
-		\item Cải tiến mô hình, cải tiến phương pháp luyện để khai thác hết tiềm năng của mô hình, thử nghiệm với những mô hình mới;
+		\item Cải tiến model, cải tiến phương pháp luyện để khai thác hết tiềm năng của model, thử nghiệm với những model mới;
 		\item Thu thập thêm dữ liệu, xây dựng một bộ cơ sở dữ liệu trung tâm;
 		\item Hoàn thiện, phát triển thêm tính năng cho ứng dụng di động;
 		\item Hợp tác với các nhà nghiên cứu về cây cà phê để tiếp tục hoàn thiện dự án.
