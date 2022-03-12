@@ -1,3 +1,55 @@
-Additional info:
-- leaf dataset training
-- training time
+1. Khả năng sáng tạo (30 điểm)
+a) Dự án cho thấy khả năng sáng tạo và độc đáo qua:
+- Những câu hỏi, vấn đề nghiên cứu được đưa ra;
+- Phương pháp tiếp cận để giải quyết vấn đề đặt ra;
+- Phân tích các dữ liệu;
+- Giải thích của dữ liệu;
+- Xây dựng hoặc thiết kế thiết bị mới.
+b) Sáng tạo trong điều tra nghiên cứu giúp trả lời câu hỏi đặt ra một cách độc đáo.
+c) Sáng tạo trong việc phát triển phương pháp nghiên cứu hiệu quả, tin cậy để giải quyết vấn đề. Khi đánh giá dự án, cần phân biệt rõ giữa sự yêu thích công nghệ đơn thuần và sự khéo léo, sáng tạo. 
+
+
+2. Ý tưởng khoa học (30 điểm)
+a) Đối với dự án khoa học
+- Vấn đề nghiên cứu được nêu rõ, không gây hiểu nhầm.
+- Vấn đề nghiên cứu được giới hạn để phù hợp cho phương pháp nghiên cứu.
+- Có chuẩn bị kế hoạch theo từng bước để đạt đến giải pháp không ?
+- Các tham biến có được nhận ra và xác định rõ không ?
+- Nếu các kiểm soát là cần thiết, thí sinh/nhóm thí sinh có nhận ra sự cần thiết của sự kiểm soát và việc kiểm soát đã được thực hiện một cách chính xác không ?
+- Có dữ liệu phù hợp để hỗ trợ kết luận không ?
+- Thí sinh/nhóm thí sinh có nhận ra hạn chế của dữ liệu không ?
+- Thí sinh/nhóm thí sinh có hiểu mối quan hệ giữa dự án với các nghiên cứu có liên quan không ?
+- Thí sinh/nhóm thí sinh có ý tưởng cho việc tiếp tục nghiên cứu trong tương lai không ?
+- Thí sinh/nhóm trích dẫn tài liệu khoa học, hay chỉ trích dẫn những tài liệu phổ biến (ví dụ, báo, tạp chí địa phương). 
+b) Đối với dự án kĩ thuật
+- Mục tiêu của dự án có được xác định rõ ràng không ?
+- Mục tiêu có liên quan đến nhu cầu sử dụng của con người không ?
+- Giải pháp đưa ra có khả thi không ? Chấp nhận được đối với người sử dụng không ? Có lợi ích về mặt kinh tế không ?
+- Giải pháp đưa ra có thể được sử dụng để thiết kế hay xây dựng sản phẩm cuối cùng không ?
+- Giải pháp đưa ra có sự cải tiến đáng kể so với các lựa chọn hoặc các ứng dụng trước đây không ?
+- Giải pháp đã được thử nghiệm sử dụng trong điều kiện thực tế hay chưa ?
+
+
+
+3. Tính thấu đáo (15 điểm)
+- Mục tiêu đạt được nằm trong phạm vi của ý định ban đầu hay không ?
+- Làm thế nào giải quyết hoàn toàn vấn đề đặt ra trong năm nghiên cứu ?
+- Kết luận đưa ra dựa trên một hay nhiều thử nghiệm ?
+- Việc ghi chép được thực hiện đầy đủ như thế nào ?
+- Thí sinh/nhóm thí sinh có biết những phương pháp tiếp cận khác hay lí thuyết khác không ?
+- Thí sinh/nhóm thí sinh đã dành bao nhiêu thời gian cho dự án ?
+- Thí sinh/nhóm thí sinh có tìm hiểu những kết quả nghiên cứu khoa học của lĩnh vực nghiên cứu không ?
+4. Kỹ năng (15 điểm) 
+- Dự án nghiên cứu có yêu cầu kỹ năng thí nghiệm, tính toán, quan sát, thiết kế để có được dữ liệu không ?
+- Dự án được thực hiện ở đâu? (ví dụ ở nhà, phòng thí nghiệm của trường trung học, phòng thí nghiệm của trường đại học). Thí sinh/nhóm thí sinh có nhận được sự trợ giúp từ cha mẹ, giáo viên, nhà khoa học hay kỹ sư không?
+- Dự án được hoàn thành dưới sự giám sát của người lớn hay thí sinh/nhóm thí sinh tự thực hiện ?
+- Thiết bị được lấy từ đâu? Thiết bị do thí sinh/nhóm thí sinh tự thiết kế riêng hay đi mượn từ người khác hay thiết bị của phòng thí nghiệm của nhà trường ?
+
+5. Tính rõ ràng, minh bạch (10 điểm)
+- Thí sinh/nhóm thí sinh có trình bày, giải thích rõ ràng mục đích, quy trình và kết luận của dự án không ?
+- Báo cáo viết có phản ánh thí sinh/nhóm thí sinh hiểu rõ công trình nghiên cứu không ?
+- Những giai đoạn quan trọng của dự án có được trình bày mạch lạc không ?
+- Số liệu có được trình bày rõ ràng không ?
+- Kết quả có được trình bày rõ ràng không ?
+- Bài trình bày có được rõ ràng, mạch lạc không ?
+- Thí sinh/nhóm thí sinh thực hiện tất cả các công việc của dự án hay có sự giúp đỡ của người khác?
